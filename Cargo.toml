@@ -1,0 +1,32 @@
+[workspace]
+resolver = "3"
+members = ["crates/*"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.92"
+license = "GPL-3.0-only"
+publish = false
+
+# Versions are pinned exactly: Rivium and Apalis are both pre-1.0 / fast-moving.
+[workspace.dependencies]
+linkjobs-core = { path = "crates/linkjobs-core" }
+
+rivium = { version = "=0.2.0", features = ["rt"] }
+rivium-host = { version = "=0.2.0" }
+rivium-http = { version = "=0.2.0", features = ["server"] }
+rivium-jni = { version = "=0.2.0" }
+
+apalis = { version = "=1.2.0", default-features = false, features = ["retry", "limit", "tracing"] }
+apalis-sqlite = { version = "=1.1.0", default-features = false, features = ["migrate", "json"] }
+# Pulled in directly to pick the tokio runtime without apalis-sqlite's TLS feature.
+sqlx = { version = "0.9", default-features = false, features = ["runtime-tokio", "sqlite"] }
+
+axum = { version = "0.8.9", default-features = false, features = ["json", "tokio", "http1"] }
+# reqwest 0.12 + rustls uses `ring`, which cross-compiles to iOS/Android without cmake/nasm.
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "charset"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1.53.3", features = ["rt-multi-thread", "sync", "time", "macros"] }
+tracing = "0.1"

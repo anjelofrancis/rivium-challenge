@@ -1,0 +1,16 @@
+[package]
+name = "linkjobs-ios"
+description = "C ABI static library for the LinkJobs iOS app (Rivium embedded host)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+name = "linkjobs"
+crate-type = ["staticlib", "rlib"]
+
+[dependencies]
+linkjobs-core.workspace = true
+rivium-host = { workspace = true, features = ["embedded"] }

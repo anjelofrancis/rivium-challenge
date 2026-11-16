@@ -1,0 +1,16 @@
+[package]
+name = "linkjobs-cli"
+description = "Run LinkJobs on a laptop with Rivium's process host"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "linkjobs"
+path = "src/main.rs"
+
+[dependencies]
+linkjobs-core.workspace = true
+rivium-host = { workspace = true, features = ["process"] }

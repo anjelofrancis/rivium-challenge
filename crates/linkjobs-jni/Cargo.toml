@@ -1,0 +1,15 @@
+[package]
+name = "linkjobs-jni"
+description = "Android JNI library for LinkJobs (loads into the Android app)"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+linkjobs-core.workspace = true
+rivium-jni.workspace = true

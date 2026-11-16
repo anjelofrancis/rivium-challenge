@@ -1,0 +1,5 @@
+module LinkJobsCore {
+    header "linkjobs.h"
+    link "linkjobs"
+    export *
+}
